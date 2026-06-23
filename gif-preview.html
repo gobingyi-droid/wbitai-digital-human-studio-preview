@@ -423,7 +423,7 @@
         { key: "done", label: "完成开心", row: 17 },
       ];
       const actionMap = new Map(actionOptions.map((option) => [option.key, option]));
-      const sheetVersionByAgent = new Map([["agent-xiaowei", "v6-clean"]]);
+      const sheetVersionByAgent = new Map([["agent-xiaowei", "v6"]]);
       const sheets = new Map();
       let duration = 90;
       let selectedActionKey = "stand";
@@ -582,7 +582,7 @@
         const image = new Image();
         image.onload = () => drawCanvas(canvas);
         const sheetVersion = sheetVersionByAgent.get(canvas.dataset.agent) ?? "v5";
-        image.src = assetUrl(`assets/ai-generated/agents/animations/${canvas.dataset.agent}-sheet-${sheetVersion}-full.png`);
+        image.src = assetUrl(`assets/ai-generated/agents/animations/${canvas.dataset.agent}-sheet-${sheetVersion}-full.webp`);
         sheets.set(canvas.dataset.agent, image);
       });
 

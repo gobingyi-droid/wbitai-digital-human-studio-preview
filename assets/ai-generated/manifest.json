@@ -1,18 +1,18 @@
 {
   "schema": "ai-collaboration-plaza/generated-assets.v1",
   "mode": "production-slim",
-  "updatedAt": "2026-06-22T00:00:00+08:00",
+  "updatedAt": "2026-06-23T00:00:00+08:00",
   "notes": "Production manifest keeps only assets referenced by the 5180 runtime. Historical candidates and source sheets are preserved in Git history before asset slimming.",
   "assets": [
     {
       "id": "plaza-background",
-      "path": "/assets/ai-generated/plaza-background-final-v20260615-1920.png",
+      "path": "/assets/ai-generated/plaza-background-final-v20260615-1920.webp",
       "type": "scene-background",
       "promptSummary": "Final 1920x1080 office plaza background used by Phaser."
     },
     {
       "id": "plaza-mobile-night-background",
-      "path": "/assets/ai-generated/plaza-background-user-open-clean-night-v6-1920.png",
+      "path": "/assets/ai-generated/plaza-background-user-open-clean-night-v6-1920.webp",
       "type": "scene-background",
       "promptSummary": "Night/mobile CSS background used behind the plaza shell."
     },
@@ -22,7 +22,7 @@
       "avatar": "/assets/ai-generated/agents/avatar-xiaowei-v6.png",
       "static": "/assets/ai-generated/agents/agent-xiaowei-v6-static.png",
       "map": "/assets/ai-generated/agents/agent-xiaowei-map-clean-v6.png",
-      "sheet": "/assets/ai-generated/agents/animations/agent-xiaowei-sheet-v6-full.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-xiaowei-sheet-v6-full.webp",
       "preview": "/assets/ai-generated/agents/animations/agent-xiaowei-preview-v6.gif",
       "previewAllActions": "/assets/ai-generated/agents/animations/agent-xiaowei-preview-v6.gif",
       "previewAllActionsWebp": "/assets/ai-generated/agents/animations/agent-xiaowei-preview-v6.webp",
@@ -35,7 +35,7 @@
       "avatar": "/assets/ai-generated/agents/avatar-tool-v5.png",
       "static": "/assets/ai-generated/agents/agent-tool-v5-static.png",
       "map": "/assets/ai-generated/agents/agent-tool-map-clean-v5.png",
-      "sheet": "/assets/ai-generated/agents/animations/agent-tool-sheet-v5-full.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-tool-sheet-v5-full.webp",
       "preview": "/assets/ai-generated/agents/animations/agent-tool-preview-v5.gif"
     },
     {
@@ -44,7 +44,7 @@
       "avatar": "/assets/ai-generated/agents/avatar-researcher-v5.png",
       "static": "/assets/ai-generated/agents/agent-researcher-v5-static.png",
       "map": "/assets/ai-generated/agents/agent-researcher-map-clean-v5.png",
-      "sheet": "/assets/ai-generated/agents/animations/agent-researcher-sheet-v5-full.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-researcher-sheet-v5-full.webp",
       "preview": "/assets/ai-generated/agents/animations/agent-researcher-preview-v5.gif"
     },
     {
@@ -53,7 +53,7 @@
       "avatar": "/assets/ai-generated/agents/avatar-orchestrator-v5.png",
       "static": "/assets/ai-generated/agents/agent-orchestrator-v5-static.png",
       "map": "/assets/ai-generated/agents/agent-orchestrator-map-clean-v5.png",
-      "sheet": "/assets/ai-generated/agents/animations/agent-orchestrator-sheet-v5-full.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-orchestrator-sheet-v5-full.webp",
       "preview": "/assets/ai-generated/agents/animations/agent-orchestrator-preview-v5.gif"
     },
     {
@@ -62,7 +62,7 @@
       "avatar": "/assets/ai-generated/agents/avatar-writer-v5.png",
       "static": "/assets/ai-generated/agents/agent-writer-v5-static.png",
       "map": "/assets/ai-generated/agents/agent-writer-map-clean-v5.png",
-      "sheet": "/assets/ai-generated/agents/animations/agent-writer-sheet-v5-full.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-writer-sheet-v5-full.webp",
       "preview": "/assets/ai-generated/agents/animations/agent-writer-preview-v5.gif"
     },
     {
@@ -71,7 +71,7 @@
       "avatar": "/assets/ai-generated/agents/avatar-reviewer-v5.png",
       "static": "/assets/ai-generated/agents/agent-reviewer-v5-static.png",
       "map": "/assets/ai-generated/agents/agent-reviewer-map-clean-v5.png",
-      "sheet": "/assets/ai-generated/agents/animations/agent-reviewer-sheet-v5-full.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-reviewer-sheet-v5-full.webp",
       "preview": "/assets/ai-generated/agents/animations/agent-reviewer-preview-v5.gif"
     },
     {
@@ -82,7 +82,7 @@
         "/assets/ai-generated/effects/handoff-marker-v1.png",
         "/assets/ai-generated/effects/checkpoint-badge-v1.png",
         "/assets/ai-generated/effects/zone-glow-v1.png",
-        "/assets/ai-generated/effects/wbit-badge-back-v2.png"
+        "/assets/ai-generated/effects/wbit-badge-back-v2.webp"
       ]
     },
     {
