@@ -1,0 +1,130 @@
+{
+  "schema": "ai-collaboration-plaza/generated-assets.v1",
+  "mode": "production-slim",
+  "updatedAt": "2026-06-22T00:00:00+08:00",
+  "notes": "Production manifest keeps only assets referenced by the 5180 runtime. Historical candidates and source sheets are preserved in Git history before asset slimming.",
+  "assets": [
+    {
+      "id": "plaza-background",
+      "path": "/assets/ai-generated/plaza-background-final-v20260615-1920.png",
+      "type": "scene-background",
+      "promptSummary": "Final 1920x1080 office plaza background used by Phaser."
+    },
+    {
+      "id": "plaza-mobile-night-background",
+      "path": "/assets/ai-generated/plaza-background-user-open-clean-night-v6-1920.png",
+      "type": "scene-background",
+      "promptSummary": "Night/mobile CSS background used behind the plaza shell."
+    },
+    {
+      "id": "agent-xiaowei",
+      "type": "character",
+      "avatar": "/assets/ai-generated/agents/avatar-xiaowei-v6.png",
+      "static": "/assets/ai-generated/agents/agent-xiaowei-v6-static.png",
+      "map": "/assets/ai-generated/agents/agent-xiaowei-map-clean-v6.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-xiaowei-sheet-v6-full.png",
+      "preview": "/assets/ai-generated/agents/animations/agent-xiaowei-preview-v6.gif",
+      "previewAllActions": "/assets/ai-generated/agents/animations/agent-xiaowei-preview-v6.gif",
+      "previewAllActionsWebp": "/assets/ai-generated/agents/animations/agent-xiaowei-preview-v6.webp",
+      "contactSheet": "/assets/ai-generated/agents/animations/agent-xiaowei-v6-animation-contact.png",
+      "promptSummary": "Xiaowei decision-maker character assets from the latest model-generated upright posture version, with transparent edge cleanup."
+    },
+    {
+      "id": "agent-tool",
+      "type": "character",
+      "avatar": "/assets/ai-generated/agents/avatar-tool-v5.png",
+      "static": "/assets/ai-generated/agents/agent-tool-v5-static.png",
+      "map": "/assets/ai-generated/agents/agent-tool-map-clean-v5.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-tool-sheet-v5-full.png",
+      "preview": "/assets/ai-generated/agents/animations/agent-tool-preview-v5.gif"
+    },
+    {
+      "id": "agent-researcher",
+      "type": "character",
+      "avatar": "/assets/ai-generated/agents/avatar-researcher-v5.png",
+      "static": "/assets/ai-generated/agents/agent-researcher-v5-static.png",
+      "map": "/assets/ai-generated/agents/agent-researcher-map-clean-v5.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-researcher-sheet-v5-full.png",
+      "preview": "/assets/ai-generated/agents/animations/agent-researcher-preview-v5.gif"
+    },
+    {
+      "id": "agent-orchestrator",
+      "type": "character",
+      "avatar": "/assets/ai-generated/agents/avatar-orchestrator-v5.png",
+      "static": "/assets/ai-generated/agents/agent-orchestrator-v5-static.png",
+      "map": "/assets/ai-generated/agents/agent-orchestrator-map-clean-v5.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-orchestrator-sheet-v5-full.png",
+      "preview": "/assets/ai-generated/agents/animations/agent-orchestrator-preview-v5.gif"
+    },
+    {
+      "id": "agent-writer",
+      "type": "character",
+      "avatar": "/assets/ai-generated/agents/avatar-writer-v5.png",
+      "static": "/assets/ai-generated/agents/agent-writer-v5-static.png",
+      "map": "/assets/ai-generated/agents/agent-writer-map-clean-v5.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-writer-sheet-v5-full.png",
+      "preview": "/assets/ai-generated/agents/animations/agent-writer-preview-v5.gif"
+    },
+    {
+      "id": "agent-reviewer",
+      "type": "character",
+      "avatar": "/assets/ai-generated/agents/avatar-reviewer-v5.png",
+      "static": "/assets/ai-generated/agents/agent-reviewer-v5-static.png",
+      "map": "/assets/ai-generated/agents/agent-reviewer-map-clean-v5.png",
+      "sheet": "/assets/ai-generated/agents/animations/agent-reviewer-sheet-v5-full.png",
+      "preview": "/assets/ai-generated/agents/animations/agent-reviewer-preview-v5.gif"
+    },
+    {
+      "id": "runtime-effects",
+      "type": "effect-set",
+      "paths": [
+        "/assets/ai-generated/effects/route-line-v1.png",
+        "/assets/ai-generated/effects/handoff-marker-v1.png",
+        "/assets/ai-generated/effects/checkpoint-badge-v1.png",
+        "/assets/ai-generated/effects/zone-glow-v1.png",
+        "/assets/ai-generated/effects/wbit-badge-back-v2.png"
+      ]
+    },
+    {
+      "id": "zone-icons",
+      "type": "ui-icon-set",
+      "paths": [
+        "/assets/ai-generated/effects/icon-planning.png",
+        "/assets/ai-generated/effects/icon-writing.png",
+        "/assets/ai-generated/effects/icon-research.png",
+        "/assets/ai-generated/effects/icon-tool-use.png",
+        "/assets/ai-generated/effects/icon-approval.png"
+      ]
+    },
+    {
+      "id": "activity-icons",
+      "type": "ui-icon-set",
+      "paths": [
+        "/assets/ai-generated/actions/walking-footsteps-v1.png",
+        "/assets/ai-generated/actions/working-monitor-v1.png",
+        "/assets/ai-generated/actions/talk-bubbles-v1.png",
+        "/assets/ai-generated/actions/coffee-cup-v1.png",
+        "/assets/ai-generated/actions/ground-shadow-v1.png"
+      ]
+    },
+    {
+      "id": "decor-props",
+      "type": "prop-set",
+      "paths": [
+        "/assets/ai-generated/props/prop-curved-dashboard-v1.png",
+        "/assets/ai-generated/props/prop-documents-v1.png",
+        "/assets/ai-generated/props/prop-dual-monitor-v1.png",
+        "/assets/ai-generated/props/prop-laptop-v1.png",
+        "/assets/ai-generated/props/prop-light-pylon-v1.png",
+        "/assets/ai-generated/props/prop-plant-v1.png",
+        "/assets/ai-generated/props/prop-server-bank-v1.png",
+        "/assets/ai-generated/props/prop-server-cart-v1.png"
+      ]
+    },
+    {
+      "id": "task-token",
+      "path": "/assets/ai-generated/task-token-v1.png",
+      "type": "workflow-token"
+    }
+  ]
+}

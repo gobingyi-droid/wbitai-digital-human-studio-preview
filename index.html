@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wbitAi数字人工作室</title>
+    <link rel="icon" href="/wbitai-digital-human-studio-preview/assets/brand/ai-collaboration-logo.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/wbitai-digital-human-studio-preview/assets/brand/ai-collaboration-logo.png" />
+    <script type="module" crossorigin src="/wbitai-digital-human-studio-preview/assets/index-AAZGYl4T.js"></script>
+    <link rel="stylesheet" crossorigin href="/wbitai-digital-human-studio-preview/assets/index-DjiuFWVh.css">
+  </head>
+  <body>
+    <div id="app">
+      <main class="cockpit">
+        <button id="mobile-exit" class="mobile-exit" type="button" aria-label="退出工作室">
+          <img src="/wbitai-digital-human-studio-preview/assets/ui/icon-switch-portrait.svg" alt="" aria-hidden="true" />
+        </button>
+        <button id="agent-window-toggle" class="agent-window-toggle" type="button" aria-controls="agent-panel" aria-expanded="true">
+          人物窗口
+        </button>
+        <button id="rotate-landscape" class="rotate-landscape" type="button" aria-label="全屏预览">
+          <img src="/wbitai-digital-human-studio-preview/assets/ui/icon-rotate-device.svg" alt="" aria-hidden="true" />
+        </button>
+        <button id="switch-portrait" class="switch-portrait" type="button" aria-label="切换竖屏">
+          <img src="/wbitai-digital-human-studio-preview/assets/ui/icon-switch-portrait.svg" alt="" aria-hidden="true" />
+        </button>
+
+        <header class="office-header" aria-label="项目导航">
+          <img class="office-logo" src="/wbitai-digital-human-studio-preview/assets/brand/wbit-digital-office-logo.jpeg" alt="Wbit 数字人办公室" />
+          <div class="office-header-actions">
+            <button id="return-task-icon" class="return-task-icon" type="button" aria-label="返回任务页">
+              <img src="/wbitai-digital-human-studio-preview/assets/brand/return-task-icon-dark.png" alt="" aria-hidden="true" />
+            </button>
+          </div>
+        </header>
+
+        <aside id="agent-panel" class="left-panel" aria-label="数字员工">
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>数字员工</h2>
+              <span id="agent-count">6 位活跃</span>
+            </div>
+            <div id="agent-list" class="agent-list"></div>
+          </section>
+        </aside>
+
+        <section class="plaza-shell" aria-label="AI 协作广场">
+          <div id="plaza-canvas" class="plaza-canvas"></div>
+          <aside id="route-editor-notes" class="route-editor-notes" aria-label="路线编辑注释表" hidden></aside>
+        </section>
+
+        <div id="agent-badge-modal" class="agent-badge-modal" role="dialog" aria-modal="true" hidden>
+          <section id="detail-panel" class="panel detail-panel agent-badge-dialog" aria-label="员工工牌"></section>
+        </div>
+
+        <div class="scene-dock" aria-label="场景控制">
+          <div class="scene-quick-actions" hidden>
+            <button id="simulate-task" class="scene-edit-button simulate-task-button" type="button">模拟任务</button>
+            <button id="scene-edit-toggle" class="scene-edit-button" type="button" hidden>场景编辑</button>
+            <button id="scene-edit-advanced" class="scene-edit-button" type="button" hidden>高级路线</button>
+            <button id="scene-edit-save" class="scene-edit-button" type="button" hidden>保存布局</button>
+            <button id="scene-edit-reset" class="scene-edit-button" type="button" hidden>重置</button>
+          </div>
+          <div class="dock-status-metrics" aria-hidden="true">
+            <strong id="runtime-mode">连接中</strong>
+            <b id="active-task-count">18</b>
+            <b id="runtime-clock">00:24:18</b>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

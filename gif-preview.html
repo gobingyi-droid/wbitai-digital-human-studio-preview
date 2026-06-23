@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数字人 v5 GIF 预览</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: #e5edf7;
+        font-family:
+          Inter,
+          "PingFang SC",
+          "Microsoft YaHei",
+          system-ui,
+          sans-serif;
+        background:
+          radial-gradient(circle at 20% 12%, rgba(34, 211, 238, 0.16), transparent 24%),
+          radial-gradient(circle at 78% 18%, rgba(249, 115, 22, 0.12), transparent 25%),
+          linear-gradient(135deg, #111827, #172033 52%, #0f172a);
+      }
+
+      main {
+        width: min(1180px, calc(100vw - 40px));
+        margin: 0 auto;
+        padding: 28px 0;
+      }
+
+      header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 28px;
+        letter-spacing: 0;
+      }
+
+      header p {
+        margin-top: 8px;
+        color: #9fb1c9;
+        font-size: 14px;
+      }
+
+      a {
+        flex: 0 0 auto;
+        color: #111827;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 800;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: #f8fafc;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .speed-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .speed-button {
+        color: #dbeafe;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 10px 12px;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.7);
+        cursor: pointer;
+      }
+
+      .speed-button.is-active {
+        color: #111827;
+        border-color: #f8fafc;
+        background: #f8fafc;
+      }
+
+      .motion-panel {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 16px;
+        padding: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.66);
+      }
+
+      .motion-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .motion-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .motion-button {
+        color: #dbeafe;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 8px 10px;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 8px;
+        background: rgba(2, 6, 23, 0.36);
+        cursor: pointer;
+      }
+
+      .motion-button.is-active {
+        color: #111827;
+        border-color: #f8fafc;
+        background: #f8fafc;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+      }
+
+      .card {
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.72);
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+      }
+
+      .stage {
+        display: grid;
+        place-items: center;
+        aspect-ratio: 1;
+        padding: 10px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+          #1f2937;
+      }
+
+      canvas {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.28));
+      }
+
+      .custom-speed {
+        display: grid;
+        grid-template-columns: auto minmax(150px, 220px) 72px auto;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.7);
+      }
+
+      .custom-speed input[type="range"] {
+        width: 100%;
+        accent-color: #f8fafc;
+      }
+
+      .custom-speed input[type="number"] {
+        width: 72px;
+        color: #e5edf7;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 7px 8px;
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        border-radius: 8px;
+        background: rgba(2, 6, 23, 0.42);
+      }
+
+      .smooth-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 9px 10px;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.7);
+      }
+
+      .smooth-toggle input {
+        width: 16px;
+        height: 16px;
+        accent-color: #f8fafc;
+      }
+
+      .meta {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+      }
+
+      strong {
+        font-size: 18px;
+      }
+
+      span {
+        color: #9fb1c9;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .card-title {
+        display: grid;
+        gap: 3px;
+      }
+
+      .action-select {
+        width: 100%;
+        min-width: 0;
+        color: #e5edf7;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 9px 10px;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 8px;
+        background: rgba(2, 6, 23, 0.48);
+      }
+
+      @media (max-width: 980px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        main {
+          width: min(100vw - 24px, 420px);
+          padding: 18px 0;
+        }
+
+        header {
+          display: grid;
+          align-items: start;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>数字人 v5 GIF 预览</h1>
+          <p>当前速度：<span id="current-speed">90ms/帧</span></p>
+        </div>
+        <div class="actions">
+          <div class="speed-controls" aria-label="速度选择">
+            <button class="speed-button is-active" type="button" data-duration="90">顺滑 90</button>
+            <button class="speed-button" type="button" data-duration="120">标准 120</button>
+            <button class="speed-button" type="button" data-duration="180">慢看 180</button>
+            <button class="speed-button" type="button" data-duration="240">细看 240</button>
+            <button class="speed-button" type="button" data-duration="480">逐帧 480</button>
+            <button class="speed-button" type="button" data-duration="720">极慢 720</button>
+          </div>
+          <label class="custom-speed">
+            <span>手动</span>
+            <input id="speed-range" type="range" min="30" max="1000" step="10" value="90" />
+            <input id="speed-number" type="number" min="30" max="1000" step="10" value="90" />
+            <span>ms/帧</span>
+          </label>
+          <label class="smooth-toggle">
+            <input id="smooth-toggle" type="checkbox" checked />
+            <span>稳定预览</span>
+          </label>
+          <a href="/">回到项目</a>
+        </div>
+      </header>
+      <section class="motion-panel" aria-label="动作选择">
+        <div class="motion-heading">
+          <strong>动作选择</strong>
+          <span>当前动作：<span id="current-action">站立正面</span></span>
+        </div>
+        <div id="action-buttons" class="motion-buttons"></div>
+      </section>
+      <section class="grid" aria-label="数字人 GIF 预览">
+        <article class="card">
+          <div class="stage">
+            <canvas data-agent="agent-orchestrator" width="384" height="384" aria-label="小账动作预览"></canvas>
+          </div>
+          <div class="meta">
+            <div class="card-title">
+              <strong>小账</strong>
+              <span>财务分析师</span>
+            </div>
+            <select class="action-select" data-agent-control="agent-orchestrator" aria-label="小账动作选择"></select>
+          </div>
+        </article>
+        <article class="card">
+          <div class="stage">
+            <canvas data-agent="agent-researcher" width="384" height="384" aria-label="小税动作预览"></canvas>
+          </div>
+          <div class="meta">
+            <div class="card-title">
+              <strong>小税</strong>
+              <span>税务专员</span>
+            </div>
+            <select class="action-select" data-agent-control="agent-researcher" aria-label="小税动作选择"></select>
+          </div>
+        </article>
+        <article class="card">
+          <div class="stage">
+            <canvas data-agent="agent-tool" width="384" height="384" aria-label="小策动作预览"></canvas>
+          </div>
+          <div class="meta">
+            <div class="card-title">
+              <strong>小策</strong>
+              <span>经营规划顾问</span>
+            </div>
+            <select class="action-select" data-agent-control="agent-tool" aria-label="小策动作选择"></select>
+          </div>
+        </article>
+        <article class="card">
+          <div class="stage">
+            <canvas data-agent="agent-writer" width="384" height="384" aria-label="小单动作预览"></canvas>
+          </div>
+          <div class="meta">
+            <div class="card-title">
+              <strong>小单</strong>
+              <span>商务销售顾问</span>
+            </div>
+            <select class="action-select" data-agent-control="agent-writer" aria-label="小单动作选择"></select>
+          </div>
+        </article>
+        <article class="card">
+          <div class="stage">
+            <canvas data-agent="agent-reviewer" width="384" height="384" aria-label="小贷动作预览"></canvas>
+          </div>
+          <div class="meta">
+            <div class="card-title">
+              <strong>小贷</strong>
+              <span>融资信贷专员</span>
+            </div>
+            <select class="action-select" data-agent-control="agent-reviewer" aria-label="小贷动作选择"></select>
+          </div>
+        </article>
+        <article class="card">
+          <div class="stage">
+            <canvas data-agent="agent-xiaowei" width="384" height="384" aria-label="小微动作预览"></canvas>
+          </div>
+          <div class="meta">
+            <div class="card-title">
+              <strong>小微</strong>
+              <span>经营决策顾问</span>
+            </div>
+            <select class="action-select" data-agent-control="agent-xiaowei" aria-label="小微动作选择"></select>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script>
+      const currentSpeed = document.querySelector("#current-speed");
+      const currentAction = document.querySelector("#current-action");
+      const actionButtons = document.querySelector("#action-buttons");
+      const buttons = Array.from(document.querySelectorAll(".speed-button"));
+      const speedRange = document.querySelector("#speed-range");
+      const speedNumber = document.querySelector("#speed-number");
+      const smoothToggle = document.querySelector("#smooth-toggle");
+      const canvases = Array.from(document.querySelectorAll("canvas[data-agent]"));
+      const actionSelects = Array.from(document.querySelectorAll(".action-select"));
+      const frameSize = 384;
+      const actionOptions = [
+        { key: "stand", label: "站立正面", row: 0 },
+        { key: "walk-down", label: "向下走", row: 1 },
+        { key: "walk-down-right", label: "右下走", row: 2 },
+        { key: "walk-down-left", label: "左下走", row: 2, flip: true },
+        { key: "walk-right", label: "向右走", row: 3 },
+        { key: "walk-left", label: "向左走", row: 3, flip: true },
+        { key: "walk-up-right", label: "右上走", row: 4 },
+        { key: "walk-up-left", label: "左上走", row: 4, flip: true },
+        { key: "walk-up", label: "向上走", row: 5 },
+        { key: "work", label: "工作思考", row: 6 },
+        { key: "talk-right", label: "右向对话", row: 7 },
+        { key: "talk-left", label: "左向对话", row: 7, flip: true },
+        { key: "review", label: "审核确认", row: 8 },
+        { key: "idle-down-right", label: "右下待机", row: 9 },
+        { key: "idle-down-left", label: "左下待机", row: 9, flip: true },
+        { key: "idle-right", label: "右侧待机", row: 10 },
+        { key: "idle-left", label: "左侧待机", row: 10, flip: true },
+        { key: "idle-up-right", label: "右上待机", row: 11 },
+        { key: "idle-up-left", label: "左上待机", row: 11, flip: true },
+        { key: "idle-up", label: "背向待机", row: 12 },
+        { key: "greeting", label: "友好打招呼", row: 13 },
+        { key: "waiting", label: "等待", row: 14 },
+        { key: "blocked", label: "卡住思考", row: 15 },
+        { key: "coffee", label: "喝咖啡", row: 16 },
+        { key: "done", label: "完成开心", row: 17 },
+      ];
+      const actionMap = new Map(actionOptions.map((option) => [option.key, option]));
+      const sheetVersionByAgent = new Map([["agent-xiaowei", "v6-clean"]]);
+      const sheets = new Map();
+      let duration = 90;
+      let selectedActionKey = "stand";
+      let smoothEnabled = true;
+      let frameIndex = 0;
+      let lastTick = performance.now();
+
+      function assetUrl(path) {
+        const normalized = path.replace(/^\/+/, "");
+        return location.protocol === "file:" ? normalized : `/${normalized}`;
+      }
+
+      function clampDuration(value) {
+        const numeric = Number(value);
+        if (!Number.isFinite(numeric)) {
+          return 90;
+        }
+        return Math.max(30, Math.min(1000, Math.round(numeric / 10) * 10));
+      }
+
+      function replaceAddress() {
+        const params = new URLSearchParams();
+        params.set("duration", String(duration));
+        params.set("action", selectedActionKey);
+        params.set("smooth", smoothEnabled ? "1" : "0");
+        history.replaceState(null, "", `?${params.toString()}`);
+      }
+
+      function setDuration(value, updateAddress = true) {
+        duration = clampDuration(value);
+        buttons.forEach((button) => {
+          const active = Number(button.dataset.duration) === duration;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        currentSpeed.textContent = `${duration}ms/帧`;
+        speedRange.value = String(duration);
+        speedNumber.value = String(duration);
+        if (updateAddress) {
+          replaceAddress();
+        }
+      }
+
+      function getAction(key) {
+        return actionMap.get(key) ?? actionMap.get("stand");
+      }
+
+      function setCanvasAction(canvas, key) {
+        const action = getAction(key);
+        canvas.dataset.action = action.key;
+        const select = document.querySelector(`[data-agent-control="${canvas.dataset.agent}"]`);
+        if (select) {
+          select.value = action.key;
+        }
+        drawCanvas(canvas);
+      }
+
+      function setGlobalAction(key, updateAddress = true) {
+        const action = getAction(key);
+        selectedActionKey = action.key;
+        currentAction.textContent = action.label;
+        document.querySelectorAll(".motion-button").forEach((button) => {
+          const active = button.dataset.action === action.key;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        canvases.forEach((canvas) => setCanvasAction(canvas, action.key));
+        frameIndex = 0;
+        lastTick = performance.now();
+        if (updateAddress) {
+          replaceAddress();
+        }
+      }
+
+      function setSmoothEnabled(value, updateAddress = true) {
+        smoothEnabled = Boolean(value);
+        smoothToggle.checked = smoothEnabled;
+        canvases.forEach((canvas) => drawCanvas(canvas));
+        if (updateAddress) {
+          replaceAddress();
+        }
+      }
+
+      function drawSheetFrame(context, image, action, sourceCol, alpha) {
+        context.save();
+        context.globalAlpha = alpha;
+        if (action.flip) {
+          context.translate(frameSize, 0);
+          context.scale(-1, 1);
+        }
+        context.drawImage(
+          image,
+          sourceCol * frameSize,
+          action.row * frameSize,
+          frameSize,
+          frameSize,
+          0,
+          0,
+          frameSize,
+          frameSize
+        );
+        context.restore();
+      }
+
+      function drawCanvas(canvas, progress = 0) {
+        const image = sheets.get(canvas.dataset.agent);
+        if (!image || !image.complete) {
+          return;
+        }
+        const context = canvas.getContext("2d");
+        const action = getAction(canvas.dataset.action);
+        const sourceCol = frameIndex % 8;
+        context.clearRect(0, 0, frameSize, frameSize);
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = "high";
+        drawSheetFrame(context, image, action, sourceCol, 1);
+      }
+
+      function tick(now) {
+        while (now - lastTick >= duration) {
+          frameIndex = (frameIndex + 1) % 8;
+          lastTick += duration;
+        }
+        const progress = Math.max(0, Math.min(1, (now - lastTick) / duration));
+        canvases.forEach((canvas) => drawCanvas(canvas, progress));
+        requestAnimationFrame(tick);
+      }
+
+      actionOptions.forEach((action) => {
+        const button = document.createElement("button");
+        button.className = "motion-button";
+        button.type = "button";
+        button.dataset.action = action.key;
+        button.textContent = action.label;
+        button.addEventListener("click", () => setGlobalAction(action.key));
+        actionButtons.append(button);
+      });
+
+      actionSelects.forEach((select) => {
+        actionOptions.forEach((action) => {
+          const option = document.createElement("option");
+          option.value = action.key;
+          option.textContent = action.label;
+          select.append(option);
+        });
+        select.addEventListener("change", () => {
+          const canvas = document.querySelector(`canvas[data-agent="${select.dataset.agentControl}"]`);
+          if (canvas) {
+            setCanvasAction(canvas, select.value);
+          }
+        });
+      });
+
+      canvases.forEach((canvas) => {
+        canvas.dataset.action = selectedActionKey;
+        const image = new Image();
+        image.onload = () => drawCanvas(canvas);
+        const sheetVersion = sheetVersionByAgent.get(canvas.dataset.agent) ?? "v5";
+        image.src = assetUrl(`assets/ai-generated/agents/animations/${canvas.dataset.agent}-sheet-${sheetVersion}-full.png`);
+        sheets.set(canvas.dataset.agent, image);
+      });
+
+      const searchParams = new URLSearchParams(location.search);
+      const durationFromQuery = searchParams.get("duration") ?? searchParams.get("speed");
+      const actionFromQuery = searchParams.get("action");
+      const smoothFromQuery = searchParams.get("smooth");
+      const legacySpeedMap = { normal: 90, smoother: 90, standard: 120, slower: 180, slow: 240, "very-slow": 720 };
+      setDuration(legacySpeedMap[durationFromQuery] ?? durationFromQuery ?? 90, false);
+      setSmoothEnabled(smoothFromQuery !== "0", false);
+      setGlobalAction(actionMap.has(actionFromQuery) ? actionFromQuery : "stand", false);
+      replaceAddress();
+      buttons.forEach((button) => button.addEventListener("click", () => setDuration(button.dataset.duration)));
+      smoothToggle.addEventListener("change", () => setSmoothEnabled(smoothToggle.checked));
+      speedRange.addEventListener("input", () => setDuration(speedRange.value));
+      speedNumber.addEventListener("change", () => setDuration(speedNumber.value));
+      speedNumber.addEventListener("input", () => {
+        if (speedNumber.value === "") {
+          return;
+        }
+        const nextDuration = clampDuration(speedNumber.value);
+        currentSpeed.textContent = `${nextDuration}ms/帧`;
+        if (Number(speedNumber.value) >= 30 && Number(speedNumber.value) <= 1000) {
+          setDuration(speedNumber.value);
+        }
+      });
+      requestAnimationFrame(tick);
+    </script>
+  </body>
+</html>
